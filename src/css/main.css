@@ -1,0 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.section {
+    @apply min-h-[600px] container mx-auto h-auto px-4 md:px-0 relative;
+}
