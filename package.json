@@ -2,14 +2,18 @@
   "name": "project-setup",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "config": {
+    "dist": "dist",
+    "domain": "chrono-setup"
+  },
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "serve": "vite preview"
+    "serve": "vite preview",
+    "deploy": "surge ./%npm_package_config_dist% --domain %npm_package_config_domain%.surge.sh"
   },
   "keywords": [],
-  "author": "",
+  "author": "Justin Pascual",
   "license": "ISC",
   "devDependencies": {
     "autoprefixer": "^10.4.0",
