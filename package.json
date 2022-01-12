@@ -1,19 +1,18 @@
 {
-  "name": "project-setup",
   "version": "1.0.0",
   "description": "",
   "config": {
     "dist": "dist",
-    "domain": "chrono-setup"
+    "domain": "polar-guess"
   },
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "serve": "vite preview",
-    "deploy": "surge ./%npm_package_config_dist% --domain %npm_package_config_domain%.surge.sh"
+    "deploy": "vite build && surge ./%npm_package_config_dist% --domain %npm_package_config_domain%.surge.sh"
   },
   "keywords": [],
-  "author": "Justin Pascual",
+  "author": "Unirises",
   "license": "ISC",
   "devDependencies": {
     "autoprefixer": "^10.4.0",

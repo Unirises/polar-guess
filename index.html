@@ -5,139 +5,340 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./src/css/main.css">
-  <title>Project Setup</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <title>Polar Guess</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+  <link rel="icon" type="image/ico" href="src/images/Spinner.png">
 </head>
-<body class="flex items-start justify-center min-h-screen h-auto w-full overflow-x-hidden">
-    <!-- navigation bar -->
-    <nav class="fixed top-0 left-0 flex items-center justify-between h-16 md:h-20 w-full z-50 px-4 lg:px-10 2xl:px-20 bg-black transition-all duration-500">
-        <!-- logo -->
-        <a href="#" class="transform hover:scale-110 transition-transform">
-            <img class="w-20 lg:w-24 h-auto" src="./src/images/logo.svg" alt="">
-        </a>
+<body class="transition-all duration-400 flex items-center justify-center min-h-screen h-auto w-full overflow-x-hidden overflow-y-hidden bg-[#eee]">
+  <!-- loading -->
+  <div id="page-loading" class="fixed top-0 left-0 w-full h-screen bg-[#eee] z-50 flex items-center justify-center flex-col text-center">
+    <h2 class="text-black text-[4rem] font-tertiary-font animate-pulse font-bold uppercase">Loading...</h2>
+  </div>
 
-        <!-- links -->
-        <div class="hidden lg:block">
-            <ul class="flex flex-row gap-12">
-                <li><a href="#" class="text-white text-base">Link 1</a></li>
-                <li><a href="#" class="text-white text-base">Link 2</a></li>
-                <li><a href="#" class="text-white text-base">Link 3</a></li>
-                <li><a href="#" class="text-white text-base">Link 4</a></li>
-                <li><a href="#" class="text-white text-base">Link 5</a></li>
-            </ul>
+  <!-- desktop only -->
+  <div class="fixed top-0 left-0 w-full lg:hidden h-screen bg-[#eee] z-50 flex items-center justify-center flex-col text-center">
+    <h2 class="text-black text-[2rem] font-tertiary-font">USE A COMPUTER FOR BETTER EXPERIENCE</h2>
+  </div>
+
+  <main id="app" class="w-full h-screen z-40">
+    
+    <!-- page 0 -->
+    <section class="flex items-center h-screen w-full" v-if="getPage() == 0">
+        <img class="absolute left-[50%] transform translate-x-[-50%] w-[25%] top-[10%] opacity-50" src="src/images/magnet.gif">
+        <img class="absolute left-[50%] transform translate-x-[-50%] w-[39%] top-[20%]" src="src/images/Title.png">
+
+       
+
+        <div class="w-[40%] absolute bottom-[5%] right-[2%] z-50 flex flex-row justify-end">
+          <button @click="nextPage(0)" class="w-[12%] drop-shadow-md mr-[3%]">
+            <img src="src/images/home.png" class="w-[100%] h-auto">
+          </button>
+
+          <button @click="soundStatus()" class="w-[12%] drop-shadow-md mr-[3%]">
+            <img id="soundStatus" src="src/images/sound-off.png" class="w-[100%] h-auto">
+          </button>
+
+          <button @click="nextPage(1)" class="w-[12%] drop-shadow-md">
+            <img src="src/images/arrow.png" class="w-[100%] h-auto">
+          </button>
         </div>
 
-        <!-- button -->
-        <div class="hidden lg:block">
-            <a href="#" class="bg-white text-black text-base py-3 px-7 rounded-md">Button 1</a>
+         <img class="w-[95%] h-full" src="src/images/background-1.jpg"> 
+    </section>
+
+    <!-- page 0 -->
+    <section class="flex items-center h-screen w-full" v-if="getPage() == 1">
+       
+        <div class="w-[40%] absolute bottom-[5%] right-[2%] z-50 flex flex-row justify-end">
+          <button @click="nextPage(0)" class="w-[12%] drop-shadow-md mr-[3%]">
+            <img src="src/images/home.png" class="w-[100%] h-auto">
+          </button>
+
+          <button @click="soundStatus()" class="w-[12%] drop-shadow-md mr-[3%]">
+            <img id="soundStatus" src="src/images/sound-off.png" class="w-[100%] h-auto">
+          </button>
+
+          <button @click="nextPage(2)" class="w-[12%] drop-shadow-md">
+            <img src="src/images/arrow.png" class="w-[100%] h-auto">
+          </button>
         </div>
 
-        <!-- mobile menu buttons -->
-        <div class="flex flex-row items-center gap-5 lg:hidden">    
-            <!-- button -->
-            <a href="#" class="bg-white text-black text-sm py-2 px-4 rounded-md">Button 1</a>
+         <img class="w-[95%] h-auto" src="src/images/background-2.jpg"> 
+    </section>
 
-            <div id="menu-button" class="flex flex-col justify-between w-7 h-6 cursor-pointer ">
-                <span class="bg-white w-full h-[3px] block rounded-full"></span>
-                <span class="bg-white w-1/2 h-[3px] block rounded-full ml-auto"></span>
-                <span class="bg-white w-full h-[3px] block rounded-full"></span>
-            </div>
-        </div>
-    </nav>  
+    <!-- page 3 -->
+    <section class="flex items-center h-screen w-full" v-if="getPage() == 2">
+       
+        <div class="w-[40%] absolute bottom-[5%] right-[2%] z-50 flex flex-row justify-end">
+          <button @click="nextPage(0)" class="w-[12%] drop-shadow-md mr-[3%]">
+            <img src="src/images/home.png" class="w-[100%] h-auto">
+          </button>
 
-    <!-- mobile menu content -->
-    <div id="menu-content" class="bg-black opacity-0 lg:opacity-0 pointer-events-none lg:pointer-events-none fixed flex flex-col justify-between z-50 h-screen w-full top-0 left-0 right-0 overflow-auto transition-all">
+          <button @click="soundStatus()" class="w-[12%] drop-shadow-md mr-[3%]">
+            <img id="soundStatus" src="src/images/sound-off.png" class="w-[100%] h-auto">
+          </button>
 
-        <div class="flex items-center justify-between px-4 h-16 md:h-20">
-            <!-- logo -->
-            <img class="w-20 h-auto block" src="./src/images/logo.svg" alt="">
-
-            <!-- close button -->
-            <a id="menu-close-button" class="flex flex-col h-7 w-7 cursor-pointer relative">
-                <span class="bg-white w-full h-[3px] block rounded-sm absolute transform rotate-45 top-3"></span>
-                <span class="bg-white w-full h-[3px] block rounded-sm absolute transform -rotate-45 top-3"></span>
-            </a>
+          <button @click="nextPage(3)" class="w-[12%] drop-shadow-md">
+            <img src="src/images/arrow.png" class="w-[100%] h-auto">
+          </button>
         </div>
 
-        <ul id="link-container" class="flex flex-col gap-7 text-2xl text-center w-full min-h-350 justify-center" >
-            <li><a href="#" class="text-white text-base">Link 21</a></li>
-            <li><a href="#" class="text-white text-base">Link 2</a></li>
-            <li><a href="#" class="text-white text-base">Link 3</a></li>
-            <li><a href="#" class="text-white text-base">Link 4</a></li>
-            <li><a href="#" class="text-white text-base">Link 5</a></li>
-        </ul>
+        
+         <img class="w-[100%] h-screen" src="src/images/background-3.jpg"> 
+    </section>
 
-        <div></div>
-    </div>
+    <!-- page 3 -->
+    <section @keyup.enter="checkAnswer(['rooftop'], 4)" class="flex items-center h-screen w-full" v-if="getPage() == 3">
+       
+        <div class="w-[40%] absolute bottom-[5%] right-[2%] z-50 flex flex-row justify-end">
+          <button @click="nextPage(0)" class="w-[12%] drop-shadow-md mr-[3%]">
+            <img src="src/images/home.png" class="w-[100%] h-auto">
+          </button>
 
-    <main class="w-full h-auto mt-16 md:mt-20">
-        <!-- Hero Section -->
-        <section class="bg-gray-500 w-full h-auto">
-            <div class="section">
-                 <!-- Contents here -->
-            </div>
-        </section>
+          <button @click="soundStatus()" class="w-[12%] drop-shadow-md mr-[3%]">
+            <img id="soundStatus" src="src/images/sound-off.png" class="w-[100%] h-auto">
+          </button>
 
-        <!-- Other Sections -->
-        <section class="bg-gray-700 w-full h-auto">
-            <div class="section">
-                 <!-- Contents here -->
-            </div>
-        </section>
+          <button @click="checkAnswer(['rooftop'], 4)" class="w-[12%] drop-shadow-md">
+            <img src="src/images/arrow.png" class="w-[100%] h-auto">
+          </button>
+        </div>
 
-        <!-- footer -->
-        <footer class="bg-black w-full h-auto pt-20 px-5 sm:px-10 md:px-16 lg:pt-16 lg:px-16 relative flex justify-center">
-            <div class="container max-auto">
-                <div class="grid lg:grid-cols-12 gap-10">
-                
-                    <div class="col-span-4 flex flex-col justify-start items-start">
-                        <img class="w-3/12 sm:w-2/12 md:w-2/12 lg:w-2/6 mb-5" src="./src/images/logo.svg" alt="">
-                        <p class="text-white text-opacity-60 mt-4 text-sm">Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam fuga aperiam atque obcaecati rerum amet suscipit blanditiis! Repellat, natus veniam aut dolor doloremque, itaque animi a ab, cumque amet eveniet sunt dolorum ipsa voluptatum consequuntur quia aliquid minus sint sit?</p>
-                    </div>
-                    
-                    <div class="col-span-4">
-                        <div class="text-sm grid grid-cols-2">
-                            <ul>
-                                <li class="mb-4"><a class="text-white/50 hover:text-white/100" href="">Link 1</a></li>
-                                <li class="mb-4"><a class="text-white/50 hover:text-white/100" href="">Link 2</a></li>
-                                <li class="mb-4"><a class="text-white/50 hover:text-white/100" href="">Link 3</a></li>
-                                <li class="mb-4"><a class="text-white/50 hover:text-white/100" href="">Link 4</a></li>
-                            </ul>
+         <input id="answer_field" v-model="user_answer" class="absolute bottom-[10%] left-[35%] block focus:bg-white outline-none w-[30%] h-[10%] border-[5px] p-[1rem] bg-transparent rounded-[1rem] border-black text-[1.5rem] font-secondary-font uppercase font-bold" type="text">
+        
+         <img class="w-[100%] h-auto" src="src/images/background-4.jpg"> 
+    </section>
+  
+    <!-- page 4 -->
+    <section class="flex items-center h-screen w-full" v-if="getPage() == 4">
+       
+        <div class="w-[40%] absolute bottom-[5%] right-[2%] z-50 flex flex-row justify-end">
+          <button @click="nextPage(0)" class="w-[12%] drop-shadow-md mr-[3%]">
+            <img src="src/images/home.png" class="w-[100%] h-auto">
+          </button>
 
-                            <ul>
-                                <li class="mb-4"><a class="text-white/50 hover:text-white/100" href="">Link 1</a></li>
-                                <li class="mb-4"><a class="text-white/50 hover:text-white/100" href="">Link 2</a></li>
-                                <li class="mb-4"><a class="text-white/50 hover:text-white/100" href="">Link 3</a></li>
-                                <li class="mb-4"><a class="text-white/50 hover:text-white/100" href="">Link 4</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    
-                    <div class="col-span-4 flex flex-col gap-10">
-                        <div class="block w-full">
-                            <p class="text-sm text-white text-opacity-50 mb-2">Contact Us</p>
-                            <a class="text-white/70 text-lg hover:text-white/100" href="#">info@flappydoge.com</a>
-                        </div>
+          <button @click="soundStatus()" class="w-[12%] drop-shadow-md mr-[3%]">
+            <img id="soundStatus" src="src/images/sound-off.png" class="w-[100%] h-auto">
+          </button>
 
-                        <div class="block w-full">
-                            <p class="text-sm text-white text-opacity-50 mb-2">Ask a Questions</p>
-                            <a class="text-white/70 text-lg hover:text-white/100" href="">support@flappydoge.com</a>
-                        </div>
-                    </div>
+          <button @click="nextPage(5)" class="w-[12%] drop-shadow-md">
+            <img src="src/images/arrow.png" class="w-[100%] h-auto">
+          </button>
+        </div>
+        
+         <img class="w-[100%] h-auto" src="src/images/background-5.jpg"> 
+    </section>
 
-                </div>
+    <!-- page 5 -->
+    <section @keyup.enter="checkAnswer(['frozen'], 6)" class="flex items-center h-screen w-full" v-if="getPage() == 5">
+       
+        <div class="w-[40%] absolute bottom-[5%] right-[2%] z-50 flex flex-row justify-end">
+          <button @click="nextPage(0)" class="w-[12%] drop-shadow-md mr-[3%]">
+            <img src="src/images/home.png" class="w-[100%] h-auto">
+          </button>
 
-                <div class="flex flex-col-reverse md:flex-row items-center justify-end gap-3 text-center py-7 mt-10">
-                    <p class="text-white mr-auto text-xs text-opacity-50 w-full block md:w-auto">© 2021 Project Name. All rights reserved</p>
+          <button @click="soundStatus()" class="w-[12%] drop-shadow-md mr-[3%]">
+            <img id="soundStatus" src="src/images/sound-off.png" class="w-[100%] h-auto">
+          </button>
 
-                    <ul class="flex gap-5 w-full justify-center md:w-auto">
-                        <li><a class="text-white text-xs text-opacity-50 hover:text-white text-left block w-full" href="#">Terms of use</a></li>
-                        <li><a class="text-white text-xs text-opacity-50 hover:text-white text-left block w-full" href="#">Privacy Policy</a></li>
-                    </ul>
-                </div>
-            </div>
-        </footer>
-    </main>
+          <button @click="checkAnswer(['frozen'], 6)" class="w-[12%] drop-shadow-md">
+            <img src="src/images/arrow.png" class="w-[100%] h-auto">
+          </button>
+        </div>
 
+         <input id="answer_field" v-model="user_answer" class="absolute bottom-[10%] left-[35%] block focus:bg-white outline-none w-[30%] h-[10%] border-[5px] p-[1rem] bg-transparent rounded-[1rem] border-black text-[1.5rem] font-secondary-font uppercase font-bold" type="text">
+        
+         <img class="w-[100%] h-auto" src="src/images/background-6.jpg"> 
+         <img class="absolute left-[35%] w-[28%] h-[40%] object-cover top-[13%] aspect-auto rounded-tl-[15%] rounded-br-[15%]" src="src/images/image3.gif" alt="">
+    </section>
+  
+    <!-- page 6 -->
+    <section class="flex items-center h-screen w-full" v-if="getPage() == 6">
+       
+        <div class="w-[40%] absolute bottom-[5%] right-[2%] z-50 flex flex-row justify-end">
+          <button @click="nextPage(0)" class="w-[12%] drop-shadow-md mr-[3%]">
+            <img src="src/images/home.png" class="w-[100%] h-auto">
+          </button>
+
+          <button @click="soundStatus()" class="w-[12%] drop-shadow-md mr-[3%]">
+            <img id="soundStatus" src="src/images/sound-off.png" class="w-[100%] h-auto">
+          </button>
+
+          <button @click="nextPage(7)" class="w-[12%] drop-shadow-md">
+            <img src="src/images/arrow.png" class="w-[100%] h-auto">
+          </button>
+        </div>
+        
+         <img class="w-[100%] h-auto" src="src/images/background-7.jpg"> 
+    </section>
+
+     <!-- page 7 -->
+    <section @keyup.enter="checkAnswer(['go', 'go!'], 8)" class="flex items-center h-screen w-full" v-if="getPage() == 7">
+       
+        <div class="w-[40%] absolute bottom-[5%] right-[2%] z-50 flex flex-row justify-end">
+          <button @click="nextPage(0)" class="w-[12%] drop-shadow-md mr-[3%]">
+            <img src="src/images/home.png" class="w-[100%] h-auto">
+          </button>
+
+          <button @click="soundStatus()" class="w-[12%] drop-shadow-md mr-[3%]">
+            <img id="soundStatus" src="src/images/sound-off.png" class="w-[100%] h-auto">
+          </button>
+
+          <button @click="checkAnswer(['go', 'go!'], 8)" class="w-[12%] drop-shadow-md">
+            <img src="src/images/arrow.png" class="w-[100%] h-auto">
+          </button>
+        </div>
+
+         <input id="answer_field" v-model="user_answer" class="absolute bottom-[9%] left-[35%] block focus:bg-white outline-none w-[30%] h-[10%] border-[5px] p-[1rem] bg-transparent rounded-[1rem] border-black text-[1.5rem] font-secondary-font uppercase font-bold" type="text">
+        
+         <img class="w-[100%] h-auto" src="src/images/background-8.jpg"> 
+         <img class="absolute left-[35%] w-[29%] h-[42%] object-cover top-[13%] aspect-auto rounded-tl-[15%] rounded-br-[15%]" src="src/images/image1.gif" alt="">
+    </section>
+
+    <!-- page 8 -->
+    <section class="flex items-center h-screen w-full" v-if="getPage() == 8">
+       
+        <div class="w-[40%] absolute bottom-[5%] right-[2%] z-50 flex flex-row justify-end">
+          <button @click="nextPage(0)" class="w-[12%] drop-shadow-md mr-[3%]">
+            <img src="src/images/home.png" class="w-[100%] h-auto">
+          </button>
+
+          <button @click="soundStatus()" class="w-[12%] drop-shadow-md mr-[3%]">
+            <img id="soundStatus" src="src/images/sound-off.png" class="w-[100%] h-auto">
+          </button>
+
+          <button @click="nextPage(9)" class="w-[12%] drop-shadow-md">
+            <img src="src/images/arrow.png" class="w-[100%] h-auto">
+          </button>
+        </div>
+        
+         <img class="w-[100%] h-auto" src="src/images/background-9.jpg"> 
+    </section>
+
+   <!-- page 9 -->
+    <section class="flex items-center h-screen w-full" v-if="getPage() == 9">
+       
+        <div class="w-[40%] absolute bottom-[5%] right-[2%] z-50 flex flex-row justify-end">
+          <button @click="nextPage(0)" class="w-[12%] drop-shadow-md mr-[3%]">
+            <img src="src/images/home.png" class="w-[100%] h-auto">
+          </button>
+
+          <button @click="soundStatus()" class="w-[12%] drop-shadow-md mr-[3%]">
+            <img id="soundStatus" src="src/images/sound-off.png" class="w-[100%] h-auto">
+          </button>
+
+          <button @click="nextPage(10)" class="w-[12%] drop-shadow-md">
+            <img src="src/images/arrow.png" class="w-[100%] h-auto">
+          </button>
+        </div>
+        
+         <img class="w-[90%] h-auto" src="src/images/background-10.jpg"> 
+    </section>
+
+    <!-- page 10 -->
+    <section @keyup.enter="checkAnswer(['stability'], 11)" class="flex items-center h-screen w-full" v-if="getPage() == 10">
+       
+        <div class="w-[40%] absolute bottom-[5%] right-[2%] z-50 flex flex-row justify-end">
+          <button @click="nextPage(0)" class="w-[12%] drop-shadow-md mr-[3%]">
+            <img src="src/images/home.png" class="w-[100%] h-auto">
+          </button>
+
+          <button @click="soundStatus()" class="w-[12%] drop-shadow-md mr-[3%]">
+            <img id="soundStatus" src="src/images/sound-off.png" class="w-[100%] h-auto">
+          </button>
+
+          <button @click="checkAnswer(['stability'], 11)" class="w-[12%] drop-shadow-md">
+            <img src="src/images/arrow.png" class="w-[100%] h-auto">
+          </button>
+        </div>
+
+         <input id="answer_field" v-model="user_answer" class="absolute bottom-[9%] left-[35%] block focus:bg-white outline-none w-[30%] h-[10%] border-[5px] p-[1rem] bg-transparent rounded-[1rem] border-black text-[1.5rem] font-secondary-font uppercase font-bold" type="text">
+        
+         <img class="w-[100%] h-auto" src="src/images/background-11.jpg"> 
+         <img class="absolute left-[33%] w-[32%] h-[45%] object-cover top-[15%] aspect-auto rounded-tl-[15%] rounded-br-[15%]" src="src/images/image8.gif" alt="">
+    </section>
+
+    <section class="flex items-center h-screen w-full" v-if="getPage() == 11">
+       
+        <div class="w-[40%] absolute bottom-[5%] right-[2%] z-50 flex flex-row justify-end">
+          <button @click="nextPage(0)" class="w-[12%] drop-shadow-md mr-[3%]">
+            <img src="src/images/home.png" class="w-[100%] h-auto">
+          </button>
+
+          <button @click="soundStatus()" class="w-[12%] drop-shadow-md mr-[3%]">
+            <img id="soundStatus" src="src/images/sound-off.png" class="w-[100%] h-auto">
+          </button>
+
+          <button @click="nextPage(12)" class="w-[12%] drop-shadow-md">
+            <img src="src/images/arrow.png" class="w-[100%] h-auto">
+          </button>
+        </div>
+        
+         <img class="w-[100%] h-auto" src="src/images/background-12.jpg"> 
+         
+    </section>
+    
+    <section class="flex items-center h-screen w-full" v-if="getPage() == 12">
+       
+        <div class="w-[40%] absolute bottom-[5%] right-[2%] z-50 flex flex-row justify-end">
+          <button @click="nextPage(0)" class="w-[12%] drop-shadow-md mr-[3%]">
+            <img src="src/images/home.png" class="w-[100%] h-auto">
+          </button>
+
+          <button @click="soundStatus()" class="w-[12%] drop-shadow-md mr-[3%]">
+            <img id="soundStatus" src="src/images/sound-off.png" class="w-[100%] h-auto">
+          </button>
+
+          <button @click="nextPage(13)" class="w-[12%] drop-shadow-md">
+            <img src="src/images/arrow.png" class="w-[100%] h-auto">
+          </button>
+        </div>
+        
+         <img class="w-[85%] h-auto" src="src/images/background-13.jpg"> 
+         <audio autoplay>
+        <source src="./src/audio/confetti.mp3" type="audio/mpeg">
+      </audio>
+    </section>
+
+    <section class="flex items-center justify-center h-screen w-full" v-if="getPage() == 13">
+        <div>
+          <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSc03CiueKS-Xym9nijVHcRRCxuoWG23MfYfSbOcb-W7e-KRqQ/viewform?embedded=true" width="640" height="500" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+        </div>
+        <div class="w-[40%] absolute bottom-[5%] right-[2%] z-50 flex flex-row justify-end">
+          <button @click="nextPage(0)" class="w-[12%] drop-shadow-md mr-[3%]">
+            <img src="src/images/home.png" class="w-[100%] h-auto">
+          </button>
+
+          <button @click="soundStatus()" class="w-[12%] drop-shadow-md mr-[3%]">
+            <img id="soundStatus" src="src/images/sound-off.png" class="w-[100%] h-auto">
+          </button>
+
+        </div>
+        
+         
+    </section>
+  </main>
+
+  <!-- bg music -->
+  <audio id="music" loop="loop">
+    <source src="./src/sound.mp3" type="audio/mpeg">
+  </audio>
+
+  <audio id="correct">
+    <source src="./src/audio/correct_answer.mp3" type="audio/mpeg">
+  </audio>
+
+   <audio id="wrong">
+    <source src="./src/audio/wrong_answer.wav" type="audio/mpeg">
+  </audio>
 </body>
+
 <script type="module" src="./src/scripts/main.js"></script>
+<script>
+  window.addEventListener("load", function () {
+    document.querySelector('#page-loading').classList.add('hidden')
+  })
+</script>
 </html>

@@ -1,7 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed&family=Questrial&family=Spartan&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-.section {
-    @apply min-h-[600px] container mx-auto h-auto px-4 md:px-0 relative;
+
+/*
+font-family: 'Barlow Semi Condensed', sans-serif;
+font-family: 'Questrial', sans-serif;
+font-family: 'Spartan', sans-serif;
+*/
+
+img {
+  pointer-events: none;
+  user-select: none;
+}
+
+button {
+  @apply transition-all transform scale-100
+}
+
+button:active {
+  @apply scale-95
 }

@@ -1,55 +1,69 @@
-// Navbar Initialization
-const body = document.body;
-const menuBtn = document.querySelector('#menu-button');
-const menuCloseBtn = document.querySelector('#menu-close-button');
-const menuContent = document.querySelector('#menu-content');
-const linkContainer = document.querySelectorAll('#link-container > li > a');
-const navbar = document.querySelector('nav');
+if (sessionStorage.getItem('page_id') == null) {
+    sessionStorage.setItem('page_id', 0)
+}
 
-const closeMobileMenu = () => {
-    menuContent.classList.add(
-        'opacity-0',
-        'pointer-events-none',
-        'lg:opacity-0'
-    );
-    body.classList.remove('overflow-y-hidden');
-};
+function getImageUrl(name) {
+    return new URL(`../images/${name}.png`,
+        import.meta.url).href
+}
 
-linkContainer.forEach((link) => {
-    link.addEventListener('click', () => {
-        closeMobileMenu();
-    });
-});
+const app = new Vue({
+    el: '#app',
+    data: {
+        active_page: 0,
+        user_answer: '',
+        sound_status: false,
+        is_answer_correct: true
+    },
+    methods: {
+        nextPage: function (current_page) {
+            sessionStorage.setItem('page_id', current_page);
+            this.active_page = current_page
+        },
+        getPage: function () {
+            this.active_page = parseInt(sessionStorage.getItem('page_id'))
+            return this.active_page
+        },
+        checkAnswer: function (answers, page_id) {
 
-menuBtn.addEventListener('click', () => {
-    menuContent.classList.remove('opacity-0', 'pointer-events-none');
-    body.classList.add('overflow-y-hidden');
-});
+            for (let i = 0; i < answers.length; i++) {
+                const answer = answers[i];
+                if (answer.toUpperCase() == this.user_answer.toUpperCase()) {
+                    this.is_answer_correct = true;
+                    break;
+                } else {
+                    this.is_answer_correct = false
+                }
+            }
 
-menuCloseBtn.addEventListener('click', () => {
-    closeMobileMenu();
-});
+            if (this.is_answer_correct) {
+                this.nextPage(page_id)
+                this.user_answer = ''
+                document.querySelector('#correct').play()
+            } else {
+                document.querySelector('#wrong').play()
+                const answer_field = document.querySelector('#answer_field');
+                answer_field.classList.replace('border-black', 'border-red-500')
+                answer_field.classList.add('animate-pulse')
+                setTimeout(() => {
+                    answer_field.classList.remove('animate-pulse')
+                    answer_field.classList.replace('border-red-500', 'border-black')
+                }, 1000)
+            }
+        },
+        soundStatus: function () {
+            this.sound_status = !this.sound_status;
+            const music = document.querySelector('#music');
+            const sound_status = document.querySelector('#soundStatus')
 
-let prevScrollpos = window.pageYOffset;
-window.addEventListener('scroll', () => {
-    let currentScrollPos = window.pageYOffset;
+            if (this.sound_status) {
+                music.play()
+                sound_status.src = getImageUrl('sound-on')
 
-    if (currentScrollPos <= 80) {
-        navbar.classList.remove('shadow-xl');
-    } else if (prevScrollpos > currentScrollPos) {
-        navbar.classList.replace('-top-20', 'top-0');
-        navbar.classList.add('shadow-xl');
-    } else {
-        navbar.classList.replace('top-0', '-top-20');
+            } else {
+                music.pause()
+                sound_status.src = getImageUrl('sound-off')
+            }
+        }
     }
-
-    prevScrollpos = currentScrollPos;
-});
-
-window.addEventListener('load', () => {
-    let currentScrollPos = window.pageYOffset;
-    if (currentScrollPos >= 80) {
-        navbar.classList.replace('-top-20', 'top-0');
-        navbar.classList.add('shadow-xl');
-    }
-});
+})
