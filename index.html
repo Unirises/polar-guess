@@ -14,16 +14,19 @@
 <body class="transition-all duration-400 flex items-center justify-center min-h-screen h-auto w-full overflow-x-hidden overflow-y-hidden bg-[#eee]">
   <!-- loading -->
   <div id="page-loading" class="fixed top-0 left-0 w-full h-screen bg-[#eee] z-50 flex items-center justify-center flex-col text-center">
+    <img class="absolute w-[20%] bottom-[2%]" src="src/images/victus-loog.png" alt="">
     <h2 class="text-black text-[4rem] font-tertiary-font animate-pulse font-bold uppercase">Loading...</h2>
   </div>
 
   <!-- desktop only -->
   <div class="fixed top-0 left-0 w-full lg:hidden h-screen bg-[#eee] z-50 flex items-center justify-center flex-col text-center">
+    <img class="absolute w-[20%] bottom-[2%]" src="src/images/victus-loog.png" alt="">
     <h2 class="text-black text-[2rem] font-tertiary-font">USE A COMPUTER FOR BETTER EXPERIENCE</h2>
   </div>
 
   <main id="app" class="w-full h-screen z-40">
-    
+    <img class="absolute top-[2%] right-[2%] w-[15%]" src="src/images/victus-loog.png" alt="">
+
     <!-- page 0 -->
     <section class="flex items-center h-screen w-full" v-if="getPage() == 0">
         <img class="absolute left-[50%] transform translate-x-[-50%] w-[25%] top-[10%] opacity-50" src="src/images/magnet.gif">
@@ -300,7 +303,7 @@
           </button> -->
         </div>
         
-         <img class="w-[85%] h-auto" src="src/images/background-13.jpg"> 
+         <img class="w-[90%] h-auto" src="src/images/background-13.jpg"> 
          <audio autoplay>
         <source src="./src/audio/cheer.wav" type="audio/mpeg">
       </audio>
