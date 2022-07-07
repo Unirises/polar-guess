@@ -24,11 +24,11 @@
     <h2 class="text-black text-[2rem] font-tertiary-font">USE A COMPUTER FOR BETTER EXPERIENCE</h2>
   </div>
 
-  <main id="app" class="w-full h-screen z-40">
+  <main id="app" class="z-40 w-full h-screen">
     
 
     <!-- page 0 -->
-    <section class="flex items-center h-screen w-full" v-if="getPage() == 0">
+    <section class="flex items-center w-full h-screen" v-if="getPage() == 0">
         <img class="absolute left-[50%] transform translate-x-[-50%] w-[25%] top-[10%] opacity-50" src="src/images/magnet.gif">
         <img class="absolute left-[50%] transform translate-x-[-50%] w-[39%] top-[20%]" src="src/images/Title.png">
 
@@ -52,7 +52,7 @@
     </section>
 
     <!-- page 0 -->
-    <section class="flex items-center h-screen w-full" v-if="getPage() == 1">
+    <section class="flex items-center w-full h-screen" v-if="getPage() == 1">
        <img class="absolute top-[2%] right-[2%] w-[15%]" src="src/images/victus-loog.png" alt="">
         <div class="w-[40%] absolute bottom-[5%] right-[2%] z-50 flex flex-row justify-end">
           <button @click="nextPage(0)" class="w-[12%] drop-shadow-md mr-[3%]">
@@ -72,7 +72,7 @@
     </section>
 
     <!-- page 3 -->
-    <section class="flex items-center h-screen w-full" v-if="getPage() == 2">
+    <section class="flex items-center w-full h-screen" v-if="getPage() == 2">
        <img class="absolute top-[2%] right-[2%] w-[15%]" src="src/images/victus-loog.png" alt="">
         <div class="w-[40%] absolute bottom-[5%] right-[2%] z-50 flex flex-row justify-end">
           <button @click="nextPage(0)" class="w-[12%] drop-shadow-md mr-[3%]">
@@ -93,7 +93,7 @@
     </section>
 
     <!-- page 3 -->
-    <section @keyup.enter="checkAnswer(['rooftop'], 4)" class="flex items-center h-screen w-full" v-if="getPage() == 3">
+    <section @keyup.enter="checkAnswer(['rooftop'], 4)" class="flex items-center w-full h-screen" v-if="getPage() == 3">
        <img class="absolute top-[2%] right-[2%] w-[15%]" src="src/images/victus-loog.png" alt="">
         <div class="w-[40%] absolute bottom-[5%] right-[2%] z-50 flex flex-row justify-end">
           <button @click="nextPage(0)" class="w-[12%] drop-shadow-md mr-[3%]">
@@ -115,7 +115,7 @@
     </section>
   
     <!-- page 4 -->
-    <section class="flex items-center h-screen w-full" v-if="getPage() == 4">
+    <section class="flex items-center w-full h-screen" v-if="getPage() == 4">
        <img class="absolute top-[2%] right-[2%] w-[15%]" src="src/images/victus-loog.png" alt="">
         <div class="w-[40%] absolute bottom-[5%] right-[2%] z-50 flex flex-row justify-end">
           <button @click="nextPage(0)" class="w-[12%] drop-shadow-md mr-[3%]">
@@ -135,7 +135,7 @@
     </section>
 
     <!-- page 5 -->
-    <section @keyup.enter="checkAnswer(['frozen'], 6)" class="flex items-center h-screen w-full" v-if="getPage() == 5">
+    <section @keyup.enter="checkAnswer(['frozen'], 6)" class="flex items-center w-full h-screen" v-if="getPage() == 5">
        <img class="absolute top-[2%] right-[2%] w-[15%]" src="src/images/victus-loog.png" alt="">
         <div class="w-[40%] absolute bottom-[5%] right-[2%] z-50 flex flex-row justify-end">
           <button @click="nextPage(0)" class="w-[12%] drop-shadow-md mr-[3%]">
@@ -158,7 +158,7 @@
     </section>
   
     <!-- page 6 -->
-    <section class="flex items-center h-screen w-full" v-if="getPage() == 6">
+    <section class="flex items-center w-full h-screen" v-if="getPage() == 6">
        <img class="absolute top-[2%] right-[2%] w-[15%]" src="src/images/victus-loog.png" alt="">
         <div class="w-[40%] absolute bottom-[5%] right-[2%] z-50 flex flex-row justify-end">
           <button @click="nextPage(0)" class="w-[12%] drop-shadow-md mr-[3%]">
@@ -178,7 +178,7 @@
     </section>
 
      <!-- page 7 -->
-    <section @keyup.enter="checkAnswer(['go', 'go!'], 8)" class="flex items-center h-screen w-full" v-if="getPage() == 7">
+    <section @keyup.enter="checkAnswer(['go', 'go!'], 8)" class="flex items-center w-full h-screen" v-if="getPage() == 7">
        <img class="absolute top-[2%] right-[2%] w-[15%]" src="src/images/victus-loog.png" alt="">
         <div class="w-[40%] absolute bottom-[5%] right-[2%] z-50 flex flex-row justify-end">
           <button @click="nextPage(0)" class="w-[12%] drop-shadow-md mr-[3%]">
@@ -201,7 +201,7 @@
     </section>
 
     <!-- page 8 -->
-    <section class="flex items-center h-screen w-full" v-if="getPage() == 8">
+    <section class="flex items-center w-full h-screen" v-if="getPage() == 8">
        <img class="absolute top-[2%] right-[2%] w-[15%]" src="src/images/victus-loog.png" alt="">
         <div class="w-[40%] absolute bottom-[5%] right-[2%] z-50 flex flex-row justify-end">
           <button @click="nextPage(0)" class="w-[12%] drop-shadow-md mr-[3%]">
@@ -221,7 +221,7 @@
     </section>
 
    <!-- page 9 -->
-    <section class="flex items-center h-screen w-full" v-if="getPage() == 9">
+    <section class="flex items-center w-full h-screen" v-if="getPage() == 9">
        <img class="absolute top-[2%] right-[2%] w-[15%]" src="src/images/victus-loog.png" alt="">
         <div class="w-[40%] absolute bottom-[5%] right-[2%] z-50 flex flex-row justify-end">
           <button @click="nextPage(0)" class="w-[12%] drop-shadow-md mr-[3%]">
@@ -241,7 +241,7 @@
     </section>
 
     <!-- page 10 -->
-    <section @keyup.enter="checkAnswer(['stability'], 11)" class="flex items-center h-screen w-full" v-if="getPage() == 10">
+    <section @keyup.enter="checkAnswer(['stability'], 11)" class="flex items-center w-full h-screen" v-if="getPage() == 10">
        <img class="absolute top-[2%] right-[2%] w-[15%]" src="src/images/victus-loog.png" alt="">
         <div class="w-[40%] absolute bottom-[5%] right-[2%] z-50 flex flex-row justify-end">
           <button @click="nextPage(0)" class="w-[12%] drop-shadow-md mr-[3%]">
@@ -263,7 +263,7 @@
          <img class="absolute left-[33%] w-[32%] h-[45%] object-cover top-[15%] aspect-auto rounded-tl-[15%] rounded-br-[15%]" src="src/images/image8.gif" alt="">
     </section>
 
-    <section class="flex items-center h-screen w-full" v-if="getPage() == 11">
+    <section class="flex items-center w-full h-screen" v-if="getPage() == 11">
        
         <div class="w-[40%] absolute bottom-[5%] right-[2%] z-50 flex flex-row justify-end">
           <button @click="nextPage(0)" class="w-[12%] drop-shadow-md mr-[3%]">
@@ -283,7 +283,7 @@
          
     </section>
     
-    <section class="flex items-center h-screen w-full" v-if="getPage() == 12">
+    <section class="flex items-center w-full h-screen" v-if="getPage() == 12">
        <div class="w-[40%] absolute bottom-[18%] right-[1%] z-50 flex flex-row justify-end">
         <button @click="nextPage(13)" class="w-[40%] drop-shadow-md mr-[3%]">
             <img src="src/images/claim-button.png" class="w-[100%] h-auto">
@@ -309,7 +309,7 @@
       </audio>
     </section>
 
-    <section class="flex items-center justify-center h-screen w-full" v-if="getPage() == 13">
+    <section class="flex items-center justify-center w-full h-screen" v-if="getPage() == 13">
       <img class="absolute top-[2%] right-[2%] w-[15%]" src="src/images/victus-loog.png" alt="">
         <div>
           <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSc03CiueKS-Xym9nijVHcRRCxuoWG23MfYfSbOcb-W7e-KRqQ/viewform?embedded=true" width="640" height="500" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
@@ -403,11 +403,11 @@ const app = new Vue({
 
             if (this.sound_status) {
                 music.play()
-                sound_status.src = 'src/images/sound-on.png';
+                sound_status.src = 'assets/sound-on.png';
 
             } else {
                 music.pause()
-                sound_status.src ='src/images/sound-off.png';
+                sound_status.src = 'assets/sound-off.png';
             }
         }
     }
